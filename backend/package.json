@@ -1,0 +1,32 @@
+{
+  "name": "library-classification",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kunalbarve02/LibraryClassification.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kunalbarve02/LibraryClassification/issues"
+  },
+  "homepage": "https://github.com/kunalbarve02/LibraryClassification#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "js-base64": "^3.7.5",
+    "natural": "^6.6.0",
+    "nodemon": "^3.0.1",
+    "pg": "^8.11.3",
+    "short-uuid": "^4.2.2",
+    "uuid": "^9.0.0"
+  }
+}

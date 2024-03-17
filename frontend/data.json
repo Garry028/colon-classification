@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "81ef55eb-c3d3-44f2-840f-cfb37f22cda3",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21230960",
+		"_collection_link": "https://red-capsule-299002.postman.co/workspace/My-Workspace~5f52d393-96ff-4a17-84bc-ed88fec118b6/collection/21230960-81ef55eb-c3d3-44f2-840f-cfb37f22cda3?action=share&source=collection_link&creator=21230960"
+	},
+	"item": [
+		{
+			"name": "Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": [\n      {\n        \"foci\":\"P\",\n        \"words\":\"criminal\"\n      },\n      {\n        \"foci\":\"2P2\",\n        \"words\":\"audio\"\n      },\n      {\n        \"foci\":\"2P2\",\n        \"words\":\"visual\"\n      },\n      {\n        \"foci\":\"2P2\",\n        \"words\":\"intelligence test\"\n      }\n  ],\n  \"subTitle\": \"\",\n  \"author\": \"P.R. Rangnathan\",\n  \"publisher\": \"\",\n  \"yop\": \"2023\",\n  \"pop\": \"0\",\n  \"editor\": \"\",\n  \"translator\": \"\",\n  \"illustrator\": \"\",\n  \"compiler\": \"\",\n  \"extractor\": \"\",\n  \"pageNos\": \"200\",\n  \"isbn\": \"\",\n  \"size\": \"\",\n  \"subject\": \"Education\",\n  \"format\": \"\",\n  \"yob\": \"1892\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/colon-classification",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"colon-classification"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
