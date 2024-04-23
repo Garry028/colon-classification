@@ -11,19 +11,23 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var getColonClassification = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(req, res) {
-    var data, cleanedFormula, fociIndex, precedingSymbols, ans;
+    var data, result, cleanedFormula, ans;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           try {
             data = (0, _helper.cloneDeep)(req.body);
+            result = "";
             cleanedFormula = data.facetFormula.replace(/\[(.*?)\]/g, "$1");
-            fociIndex = cleanedFormula.indexOf(data.title.foci);
-            precedingSymbols = "";
-            if (cleanedFormula[fociIndex - 1] && !/[a-zA-Z0-9]/.test(cleanedFormula[fociIndex - 1])) {
-              precedingSymbols = cleanedFormula[fociIndex - 1];
-            }
-            ans = data.classNumber + precedingSymbols + data.title.classNumber;
+            data.title.map(function (item) {
+              var fociIndex = cleanedFormula.indexOf(item.foci);
+              var precedingSymbols = "";
+              if (cleanedFormula[fociIndex - 1] && !/[a-zA-Z0-9]/.test(cleanedFormula[fociIndex - 1])) {
+                precedingSymbols = cleanedFormula[fociIndex - 1];
+              }
+              result += precedingSymbols + item.classNumber;
+            });
+            ans = data.classNumber + result;
             (0, _helper.OK)(200, res, {
               data: ans
             });

@@ -4,17 +4,21 @@ const getColonClassification = async (req, res) => {
     try {
         const data = cloneDeep(req.body);
 
+        let result = "";
         const cleanedFormula = data.facetFormula.replace(/\[(.*?)\]/g, "$1");
 
-        const fociIndex = cleanedFormula.indexOf(data.title.foci);
+        data.title.map(item => {
+            const fociIndex = cleanedFormula.indexOf(item.foci);
 
-        let precedingSymbols = "";
+            let precedingSymbols = "";
 
-        if (cleanedFormula[fociIndex - 1] && !/[a-zA-Z0-9]/.test(cleanedFormula[fociIndex - 1])) {
-            precedingSymbols = cleanedFormula[fociIndex - 1];
-        }
+            if (cleanedFormula[fociIndex - 1] && !/[a-zA-Z0-9]/.test(cleanedFormula[fociIndex - 1])) {
+                precedingSymbols = cleanedFormula[fociIndex - 1];
+            }
+            result += precedingSymbols + item.classNumber;
+        });
 
-        const ans = data.classNumber + precedingSymbols + data.title.classNumber;
+        const ans = data.classNumber + result;
 
         OK(200, res, { data: ans });
     } catch (err) {
