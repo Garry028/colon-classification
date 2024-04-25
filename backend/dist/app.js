@@ -2,6 +2,7 @@
 
 var _cors = _interopRequireDefault(require("cors"));
 var _express = _interopRequireDefault(require("express"));
+var _https = _interopRequireDefault(require("https"));
 var _config = _interopRequireDefault(require("./config"));
 var _models = _interopRequireDefault(require("./models"));
 var _index = _interopRequireDefault(require("./routes/index"));
@@ -12,6 +13,17 @@ app.use((0, _cors["default"])());
 app.use(_express["default"].json());
 app.use(_express["default"]["static"]("public"));
 (0, _index["default"])(app);
+var pingInterval = 864000;
+function sendPingRequest(url) {
+  _https["default"].get(url, function (res) {
+    console.log("Ping sent to ".concat(url, ". Status: ").concat(res.statusCode === 200 ? "Server is alive" : "Error"));
+  }).on("error", function (err) {
+    console.error("Ping error for ".concat(url, ": ").concat(err.message));
+  });
+}
+setInterval(function () {
+  sendPingRequest("https://colon-classification.onrender.com/");
+}, pingInterval);
 process.on("unhandledRejection", function (reason, p) {
   console.error(reason, "Unhandled Rejection at Promise", p);
 }).on("uncaughtException", function (err) {

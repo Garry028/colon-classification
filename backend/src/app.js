@@ -1,5 +1,6 @@
 import cors from "cors";
 import express from "express";
+import https from "https";
 import config from "./config";
 import db from "./models";
 import routes from "./routes/index";
@@ -10,6 +11,22 @@ app.use(express.json());
 app.use(express.static("public"));
 
 routes(app);
+
+const pingInterval = 864000;
+
+function sendPingRequest (url) {
+    https
+        .get(url, res => {
+            console.log(`Ping sent to ${url}. Status: ${res.statusCode === 200 ? "Server is alive" : "Error"}`);
+        })
+        .on("error", err => {
+            console.error(`Ping error for ${url}: ${err.message}`);
+        });
+}
+
+setInterval(() => {
+    sendPingRequest("https://colon-classification.onrender.com/");
+}, pingInterval);
 
 process
     .on("unhandledRejection", (reason, p) => {

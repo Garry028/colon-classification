@@ -23,7 +23,6 @@
     "seed:undo": "cd ./src && npx sequelize-cli db:seed:undo:all --env db",
     "seed:generate": "cd ./src && sequelize-cli seed:generate --env db --name"
   },
-
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -57,6 +56,7 @@
     "crypto-js": "^4.1.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "https": "^1.0.0",
     "joi": "^17.4.2",
     "jsonwebtoken": "^9.0.0",
     "nanoid": "^3.1.25",

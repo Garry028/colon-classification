@@ -15,7 +15,7 @@ var bySubjectId = /*#__PURE__*/function () {
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
-          return _context.abrupt("return", _models["default"].Titles.findOne({
+          return _context.abrupt("return", _models["default"].Titles.findAll({
             where: {
               belongsTo: belongsTo
             }
